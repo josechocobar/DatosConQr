@@ -13,6 +13,14 @@ class LocalDataSource(private val appDatabase: AppDatabase) {
     val allPersonByApellido: Flow<List<Persona>> = appDatabase.personaDao().getAllByApellido()
 
 
+    fun getPersona(numeroDni:Int): Flow<List<Persona>>{
+        return appDatabase.personaDao().getByDni(numeroDni)
+    }
+
+    fun getPersona(apellido:String) : Flow<List<Persona>> {
+        return appDatabase.personaDao().getByApellido(apellido)
+    }
+
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(persona: Persona) {

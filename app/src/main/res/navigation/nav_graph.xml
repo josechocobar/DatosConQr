@@ -9,5 +9,14 @@
         android:id="@+id/mainFragment"
         android:name="com.cuty.datosconqr.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_lectorQr"
+            app:destination="@id/lectorQr" />
+    </fragment>
+    <fragment
+        android:id="@+id/lectorQr"
+        android:name="com.cuty.datosconqr.ui.LectorQr"
+        android:label="fragment_lector_qr"
+        tools:layout="@layout/fragment_lector_qr" />
 </navigation>

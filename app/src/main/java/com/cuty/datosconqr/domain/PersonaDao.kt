@@ -1,11 +1,13 @@
 package com.cuty.datosconqr.domain
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.cuty.datosconqr.models.Persona
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface PersonaDao {
     @Query("SELECT * FROM tabla_persona ORDER BY nro_dni")
     fun getAllByDni(): Flow<List<Persona>>
