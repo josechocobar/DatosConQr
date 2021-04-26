@@ -18,10 +18,10 @@ interface PersonaDao {
     @Query("SELECT * FROM tabla_persona WHERE nro_dni =:numeroDni")
     fun getByDni(numeroDni:Int):Flow<List<Persona>>
 
-    @Query("SELECT * FROM tabla_persona WHERE nro_dni =:apellido")
+    @Query("SELECT * FROM tabla_persona WHERE primer_apellido =:apellido")
     fun getByApellido(apellido:String): Flow<List<Persona>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(persona: Persona)
 
     @Query("DELETE FROM tabla_persona WHERE nro_dni =:dni")

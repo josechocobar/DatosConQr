@@ -1,74 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/rv_background_view"
+        android:id="@+id/iv_fondo_card"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/rectangle_verde"
-        android:backgroundTint="@color/blanco_suave"
+        android:src="@drawable/rectangle_verde"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/dni_item_address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        app:layout_constraintTop_toTopOf="@id/dni_item_name"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/blanco_suave"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido"
+        app:layout_constraintTop_toTopOf="@id/dni_item_surname"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/blanco_suave"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dni"
+        app:layout_constraintEnd_toEndOf="@id/tv_surname"
+        app:layout_constraintTop_toTopOf="@id/dni_item_number_id"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/blanco_suave"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_dni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dni"
+        app:layout_constraintEnd_toEndOf="@id/tv_surname"
+        app:layout_constraintTop_toTopOf="@id/dni_item_number_id"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/blanco_suave"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fecha nac."
+        app:layout_constraintEnd_toEndOf="@id/tv_surname"
+        app:layout_constraintTop_toTopOf="@id/dni_item_address"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/blanco_suave"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 
     <TextView
         android:id="@+id/dni_item_name"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="@id/rv_background_view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rectangle_verde"
-        android:text="      name"
-        android:textColor="@color/blanco_suave"/>
+        android:text="name"
+        android:textColor="@color/blanco_suave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_nombre"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/dni_item_surname"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dni_item_name"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_surname"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/rectangle_verde"
-        android:text="      surname"
-        android:textColor="@color/blanco_suave"/>
+        android:textColor="@color/blanco_suave"
+        android:text="surname"/>
     <TextView
         android:id="@+id/dni_item_number_id"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dni_item_surname"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/dni_item_surname"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/blanco_suave"
         app:layout_constraintBottom_toTopOf="@id/dni_item_address"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/rectangle_verde"
-        android:text="      id number"
-        android:textColor="@color/blanco_suave"/>
+        android:text="id number"/>
     <TextView
         android:id="@+id/dni_item_address"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dni_item_number_id"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/dni_item_surname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/rv_background_view"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rectangle_verde"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="10dp"
-        android:text="      address"
-        android:textColor="@color/blanco_suave"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/blanco_suave"
+        android:text="address" />
+    <ImageButton
+        android:id="@+id/bu_rv_delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:backgroundTint="@color/blanco_suave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="40dp" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Persona(
     @PrimaryKey(autoGenerate = false) @ColumnInfo(name = "nro_dni")
-    var id: String,
+    var id: Int,
     @ColumnInfo(name = "primer_nombre")
     var primerNombre: String,
     @ColumnInfo(name = "primer_apellido")

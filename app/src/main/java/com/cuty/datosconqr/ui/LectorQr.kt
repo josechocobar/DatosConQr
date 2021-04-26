@@ -29,10 +29,13 @@ import java.lang.Exception
 
 class LectorQr : Fragment() {
 
-    private val viewModel by activityViewModels<MainViewModel> { VMFactory(
-        LocalDataSource(
-        AppDatabase.getDatabase(requireActivity().applicationContext))
-    ) }
+    private val viewModel by activityViewModels<MainViewModel> {
+        VMFactory(
+            LocalDataSource(
+                AppDatabase.getDatabase(requireActivity().applicationContext)
+            )
+        )
+    }
 
     private var surfaceView: SurfaceView? = null
     private var barcodeDetector: BarcodeDetector? = null
@@ -43,11 +46,10 @@ class LectorQr : Fragment() {
     private var toneGen1: ToneGenerator? = null
     private var barcodeText: TextView? = null
     private var barcodeData: String? = null
-    private var nameText : TextView? = null
-    private var surnameText : TextView? = null
-    private var birthdayText : TextView? = null
-    private var saveDataButton : FloatingActionButton? = null
-    private var personita : Persona? = null
+    private var nameText: TextView? = null
+    private var surnameText: TextView? = null
+    private var birthdayText: TextView? = null
+    private var saveDataButton: FloatingActionButton? = null
 
     private var binding: FragmentLectorQrBinding? = null
 
@@ -69,34 +71,60 @@ class LectorQr : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLectorQrBinding.bind(view)
         toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
-        surfaceView = binding!!.surfaceView
-        barcodeText = binding!!.idNumberLectorQr
-        nameText = binding!!.nameLectorQr
-        surnameText = binding!!.surnameLectorQr
-        birthdayText = binding!!.birthdayLectorQr
-        saveDataButton = binding!!.buSaveData
+        surfaceView = binding?.surfaceView
+        barcodeText = binding?.idNumberLectorQr
+        nameText = binding?.nameLectorQr
+        surnameText = binding?.surnameLectorQr
+        birthdayText = binding?.birthdayLectorQr
+        saveDataButton = binding?.buSaveData
 
 
 
         initialiseDetectorsAndSources()
         inicialiseSaveButton()
     }
-    private fun inicialiseSaveButton(){
+
+    private fun inicialiseSaveButton() {
         saveDataButton?.setOnClickListener {
             try {
-                personita?.let {
-                    viewModel.insert(personita!!)
+                if (
+                    barcodeText?.text != "" &&
+                    nameText?.text != "" &&
+                    surnameText?.text != "" &&
+                    birthdayText?.text != ""
+                ) {
+                    viewModel.insert(
+                        Persona(
+                            barcodeText?.text.toString().toInt(),
+                            nameText?.text.toString(),
+                            surnameText?.text.toString(),
+                            birthdayText?.text.toString()
+                        )
+                    )
+                }else{
+                    Toast.makeText(
+                        context,
+                        "Alguno de los campos esta vacio",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-                personita = null
                 barcodeText?.text = ""
                 nameText?.text = ""
                 surnameText?.text = ""
                 birthdayText?.text = ""
-                Toast.makeText(context,"La persona se guardó correctamente en la base de datos",Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    context,
+                    "La persona se guardó correctamente en la base de datos",
+                    Toast.LENGTH_LONG
+                ).show()
 
 
-            }catch (e:Exception){
-                Toast.makeText(context,"No se pudo guardar porque: ${e.message}",Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    context,
+                    "No se pudo guardar porque: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -131,7 +159,7 @@ class LectorQr : Fragment() {
                                 requireContext(),
                                 android.Manifest.permission.CAMERA
                             ) == PackageManager.PERMISSION_GRANTED
-                        ){
+                        ) {
                             cameraSource?.start(surfaceView!!.holder)
                         }
                     }
@@ -154,7 +182,11 @@ class LectorQr : Fragment() {
         })
         barcodeDetector!!.setProcessor(object : Detector.Processor<Barcode> {
             override fun release() {
-                 Toast.makeText(requireContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    requireContext(),
+                    "To prevent memory leaks barcode scanner has been stopped",
+                    Toast.LENGTH_SHORT
+                ).show();
             }
 
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
@@ -173,13 +205,13 @@ class LectorQr : Fragment() {
                             val data = barcodeData?.split("@")
                             val persona: Persona? = data?.let {
                                 Persona(
-                                    data[4], data[2],
-                                    data[1], data[6])
+                                    data[4].toInt(), data[2],
+                                    data[1], data[6]
+                                )
 
                             }
                             persona?.let {
-                                personita = persona
-                                barcodeText!!.text = persona.id
+                                barcodeText!!.text = persona.id.toString()
                                 nameText!!.text = persona.primerNombre
                                 surnameText!!.text = persona.primerApellido
                                 birthdayText!!.text = persona.diaDeNacimiento
@@ -193,8 +225,5 @@ class LectorQr : Fragment() {
                 }
             }
         })
-
     }
-
-
 }
