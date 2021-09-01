@@ -12,7 +12,7 @@ interface PersonaDao {
     @Query("SELECT * FROM tabla_persona ORDER BY nro_dni")
     fun getAllByDni(): Flow<List<Persona>>
 
-    @Query("SELECT * FROM TABLA_PERSONA ORDER BY primer_apellido" )
+    @Query("SELECT * FROM tabla_persona ORDER BY primer_apellido" )
     fun getAllByApellido():Flow<List<Persona>>
 
     @Query("SELECT * FROM tabla_persona WHERE nro_dni =:numeroDni")

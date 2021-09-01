@@ -211,15 +211,15 @@ class LectorQr : Fragment() {
 
                             }
                             persona?.let {
-                                barcodeText!!.text = persona.id.toString()
-                                nameText!!.text = persona.primerNombre
-                                surnameText!!.text = persona.primerApellido
-                                birthdayText!!.text = persona.diaDeNacimiento
+                                barcodeText?.text = persona.id.toString()
+                                nameText?.text = persona.primerNombre
+                                surnameText?.text = persona.primerApellido
+                                birthdayText?.text = persona.diaDeNacimiento
 
-                                toneGen1!!.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
+                                toneGen1?.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
                             }
                             //barcodeText!!.text = barcodeData
-                            toneGen1!!.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
+                            toneGen1?.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
                         }
                     }
                 }

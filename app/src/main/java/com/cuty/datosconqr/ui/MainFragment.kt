@@ -63,11 +63,6 @@ class MainFragment : Fragment(), PersonAdapter.OnItemClickListener {
         setAboutButton()
         connectivityLiveData = ConnectivityLiveData(requireActivity().application)
         observeInternetCheck()
-
-
-
-
-
     }
     fun observeInternetCheck(){
         connectivityLiveData?.observe(viewLifecycleOwner, Observer {
@@ -94,7 +89,6 @@ class MainFragment : Fragment(), PersonAdapter.OnItemClickListener {
                 .setIcon(R.drawable.ic_baseline_error_outline_24)
                 .show()
         }
-
     }
     private fun setAlertDialogForPrint(){
         AlertDialog.Builder(context)
@@ -173,8 +167,8 @@ class MainFragment : Fragment(), PersonAdapter.OnItemClickListener {
     }
 
     private fun setupRecyclerView() {
-        binding!!.rvMainPersonas.layoutManager = LinearLayoutManager(requireContext())
-        binding!!.rvMainPersonas.addItemDecoration(DividerItemDecoration(
+        binding?.rvMainPersonas?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.rvMainPersonas?.addItemDecoration(DividerItemDecoration(
             requireContext(),
         DividerItemDecoration.VERTICAL))
     }
