@@ -4,6 +4,10 @@ import androidx.lifecycle.*
 import com.cuty.datosconqr.connectivity.ConnectivityLiveData
 import com.cuty.datosconqr.datasource.LocalDataSource
 import com.cuty.datosconqr.models.Persona
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val localDataSource: LocalDataSource) : ViewModel() {
@@ -17,5 +21,9 @@ class MainViewModel(private val localDataSource: LocalDataSource) : ViewModel() 
     fun deletePerson(id: Int) = viewModelScope.launch {
         localDataSource.deleteItem(id)
     }
+
+    fun getperson(id: Int) = localDataSource.getPersona(id)
+
+
 
 }

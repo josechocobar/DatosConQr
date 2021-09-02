@@ -13,11 +13,11 @@ class LocalDataSource(private val appDatabase: AppDatabase) {
     val allPersonByApellido: Flow<List<Persona>> = appDatabase.personaDao().getAllByApellido()
 
 
-    fun getPersona(numeroDni:Int): Flow<List<Persona>>{
+    fun getPersona(numeroDni:Int): Persona{
         return appDatabase.personaDao().getByDni(numeroDni)
     }
 
-    fun getPersona(apellido:String) : Flow<List<Persona>> {
+    fun getPersona(apellido:String) :Persona {
         return appDatabase.personaDao().getByApellido(apellido)
     }
 

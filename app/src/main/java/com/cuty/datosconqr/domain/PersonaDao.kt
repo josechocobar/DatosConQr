@@ -16,10 +16,10 @@ interface PersonaDao {
     fun getAllByApellido():Flow<List<Persona>>
 
     @Query("SELECT * FROM tabla_persona WHERE nro_dni =:numeroDni")
-    fun getByDni(numeroDni:Int):Flow<List<Persona>>
+    fun getByDni(numeroDni:Int):Persona
 
     @Query("SELECT * FROM tabla_persona WHERE primer_apellido =:apellido")
-    fun getByApellido(apellido:String): Flow<List<Persona>>
+    fun getByApellido(apellido:String): Persona
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(persona: Persona)
