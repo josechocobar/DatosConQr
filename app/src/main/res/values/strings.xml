@@ -2,4 +2,7 @@
     <string name="app_name">DatosConQr</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="desc">imageView</string>
+    <string name="conexion">conexion?</string>
+    <string name="success">La persona se guardó correctamente en la base de datos</string>
 </resources>

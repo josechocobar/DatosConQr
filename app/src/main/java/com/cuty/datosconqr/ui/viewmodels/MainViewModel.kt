@@ -9,6 +9,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import kotlin.coroutines.coroutineContext
 
 class MainViewModel(private val localDataSource: LocalDataSource) : ViewModel() {
 
@@ -23,6 +24,7 @@ class MainViewModel(private val localDataSource: LocalDataSource) : ViewModel() 
     }
 
     fun getperson(id: Int) = localDataSource.getPersona(id)
+
 
 
 

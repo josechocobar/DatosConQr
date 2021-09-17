@@ -93,7 +93,7 @@ class LectorQr : Fragment() {
                     surnameText?.text != "" &&
                     birthdayText?.text != ""
                 ) {
-                    viewModel.insert(
+                    /*viewModel.insert(
                         Persona(
                             barcodeText?.text.toString().toInt(),
                             nameText?.text.toString(),
@@ -101,20 +101,19 @@ class LectorQr : Fragment() {
                             birthdayText?.text.toString()
                         )
                     )
-                }else{
+
+                     */
+                    cleanFields()
+                } else {
                     Toast.makeText(
                         context,
                         "Alguno de los campos esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
                 }
-                barcodeText?.text = ""
-                nameText?.text = ""
-                surnameText?.text = ""
-                birthdayText?.text = ""
                 Toast.makeText(
                     context,
-                    "La persona se guardó correctamente en la base de datos",
+                    getString(R.string.success),
                     Toast.LENGTH_LONG
                 ).show()
 
@@ -127,6 +126,13 @@ class LectorQr : Fragment() {
                 ).show()
             }
         }
+    }
+
+    private fun cleanFields() {
+        barcodeText?.text = ""
+        nameText?.text = ""
+        surnameText?.text = ""
+        birthdayText?.text = ""
     }
 
     private fun initialiseDetectorsAndSources() {

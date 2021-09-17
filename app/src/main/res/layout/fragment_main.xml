@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/bu_about"
-            android:src="@drawable/ic_baseline_error_outline_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/ic_baseline_error_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="40dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/desc"
             android:src="@drawable/ic_baseline_person_add_24"
             app:layout_constraintBottom_toBottomOf="@id/main_constraint"
-            app:layout_constraintEnd_toEndOf="@id/main_constraint"
-            android:layout_marginBottom="40dp"
-            android:layout_marginEnd="40dp"/>
+            app:layout_constraintEnd_toEndOf="@id/main_constraint" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/bu_print_db"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/desc"
             android:src="@drawable/ic_baseline_print_24"
             app:layout_constraintBottom_toBottomOf="@id/main_constraint"
             app:layout_constraintEnd_toStartOf="@id/fab"
-            app:layout_constraintStart_toEndOf="@id/bu_about"
-            android:layout_marginBottom="40dp"/>
+            app:layout_constraintStart_toEndOf="@id/bu_about" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main_personas"
@@ -48,15 +52,16 @@
             app:layout_constraintEnd_toEndOf="parent "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_conection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="conexion?"
+            android:layout_marginBottom="20dp"
+            android:text="@string/conexion"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="20dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

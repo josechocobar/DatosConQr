@@ -1,6 +1,7 @@
 package com.cuty.datosconqr.datasource
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -15,24 +16,40 @@ import org.junit.runner.RunWith
 import org.junit.runners.model.TestClass
 
 
-class LocalDataSourceTest : TestCase(){
+class ViewModelTest{
+
     private lateinit var viewmodel : MainViewModel
+    lateinit var persona : Persona
+
 
     @Before
-    override fun setUp() {
-        super.setUp()
+    fun setUp() {
+
         val context = ApplicationProvider.getApplicationContext<Context>()
         val db = Room.inMemoryDatabaseBuilder(context,AppDatabase::class.java)
             .allowMainThreadQueries().build()
         val datasource = LocalDataSource(db)
         viewmodel = MainViewModel(datasource)
+        persona = Persona(1,"jose","chocobar","25/06/1992")
 
     }
+
     @Test
-    fun testMainViewModel(){
-        viewmodel.insert(Persona(1,"jose","chocobar","25/06/1992"))
-        val result = viewmodel.getperson(1)
-        assertEquals(result,Persona(1,"jose","chocobar","25/06/1992"))
+    fun testInsert(){
+        viewmodel.insert(persona)
+        Log.d("test","${persona.id} , ${persona.primerNombre}${persona.primerApellido}")
     }
+
+    @Test
+    fun testDelete(){
+        viewmodel.insert(persona)
+        viewmodel.deletePerson(1)
+    }
+    @Test
+    fun testGet(){
+        viewmodel.getperson(1)
+    }
+
+
 
 }
